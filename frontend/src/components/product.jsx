@@ -1,10 +1,10 @@
-export default function ProductCard({ name, image, description, price }) {
+export default function ProductCard({ name, images, description, price }) {
   return (
     <div className="bg-white p-3 rounded-lg shadow-md transition-all transform hover:scale-105 hover:shadow-lg hover:cursor-pointer flex flex-col justify-between duration-300 ease-in-out max-w-xs">
       <div className="w-full">
         <img
-          src={image}
-          alt={name}
+          src={`http://localhost:1981/products-photo/${images[0]}`}
+          alt={name} 
           className="w-full h-48 object-cover rounded-lg mb-3 transition-transform duration-300 ease-in-out hover:scale-105"
         />
         <h2 className="text-md font-semibold text-gray-800">{name}</h2>

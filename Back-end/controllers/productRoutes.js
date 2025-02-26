@@ -6,6 +6,7 @@ const productRouter= express.Router()
 const UserModel = require("../model/userModel")
 const mongoose = require("mongoose");
 const {productUpload}=require("../middleware/multer")
+let path=require("path")
 
 
 productRouter.post("/createProduct",productUpload.array("images",10), catchAsyncError(async(req, res, next)=>{
@@ -23,11 +24,28 @@ productRouter.post("/createProduct",productUpload.array("images",10), catchAsync
     let product=new ProductModel({email,name, description,category,tags,price,images,stock})
   
 
-    //product.images=images.map(image=>`http://localhost:8975/${image}`)
+    
     await product.save()
     res.status(201).json({message:"Product created successfully"})
 
 
+}))
+
+productRouter.get("/allproduct",catchAsyncError(async(req,res,next)=>{
+    let allproduct=await ProductModel.find()
+
+    if(allproduct && allproduct.length>0){
+        allproduct=allproduct.map((product)=>{
+        if(product.images && product.images.length>0){
+            product.images=product.images.map((ele)=> path.basename(ele));
+        }
+          return product;
+        })
+        
+    }
+
+    res.status(200).json({status:true,message:allproduct})
+    
 }))
 
 

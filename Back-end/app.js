@@ -3,6 +3,7 @@ const cors = require("cors")
 const app = express();
 app.use(express.json());
 const ErrorMiddleware= require("./middleware/error")
+const path=require("path")
 
 app.use(cors({
   origin:"*",
@@ -18,6 +19,11 @@ const productRouter = require("./controllers/productRoutes");
 app.get("/test", async (req, res) => {
   res.send("hello.....");
 });
+
+
+
+app.use('/profile-photo', express.static(path.join(__dirname, 'uploads')));
+app.use('/products-photo', express.static(path.join(__dirname, 'uploadproducts')));
 
 
 app.use("/user",userRoute)

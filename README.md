@@ -250,3 +250,95 @@ By the end of this milestone, you will:
 Implement data validation to ensure only valid data is saved
  Create a POST API endpoint to receive and store product data in MongoDB
  Understand the importance of data integrity and validation
+
+
+
+# Milestone 11: Dynamic Product Homepage
+### Overview
+In this milestone, we created a dynamic homepage that displays all products stored in MongoDB. The backend API fetches all product data, which is then displayed on the frontend using React components.
+
+### Learning Goals 🎯
+By the end of this milestone, I was able to:
+
+Write an endpoint in the backend that fetches all product data from MongoDB.
+Send the product data from the backend to the frontend.
+Display the product data dynamically in the frontend using React components (Product Card).
+Project Structure
+bash
+Copy
+├── backend/
+│   ├── models/
+│   │   └── Product.js        # Mongoose model for products
+│   ├── routes/
+│   │   └── productRoutes.js  # API routes for handling products
+│   ├── server.js             # Express server setup
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ProductCard.js # Component for displaying individual product
+│   │   │   └── ProductList.js # Component for fetching and displaying all products
+│   │   ├── App.js            # Main app file
+│   │   └── index.js          # React app entry point
+└── README.md                 # Project overview and setup instructions
+How It Works
+#### Backend (Express & MongoDB)
+Endpoint: /products
+
+A GET request to this endpoint fetches all the products stored in MongoDB and returns them in JSON format.
+MongoDB Model:
+
+The product data is stored using a Mongoose model called Product, with fields like name, price, description, and image.
+#### Frontend (React)
+ProductList Component:
+
+The ProductList component makes an API call to the /products endpoint to fetch the product data.
+It then maps over the product data and passes each product to the ProductCard component to display the details.
+ProductCard Component:
+
+The ProductCard component takes in a single product as a prop and displays the product's details, such as name, description, price, and image.
+
+
+
+
+
+# Milestone 12: My Products Page
+### Overview
+In this milestone, we created a "My Products" page that displays only the products associated with a specific user based on their email. We wrote an endpoint that filters products by the user's email and sends the data to the frontend. The frontend then displays the filtered products dynamically using the product card component.
+
+### Learning Goals 🎯
+By the end of this milestone, I was able to:
+
+Write an endpoint in the backend that filters products by user email and fetches only those products.
+Send the filtered data from the backend to the frontend.
+Display the filtered products dynamically in the frontend using React components (Product Card).
+Project Structure
+bash
+Copy
+├── backend/
+│   ├── models/
+│   │   └── Product.js        # Mongoose model for products
+│   ├── routes/
+│   │   └── productRoutes.js  # API routes for handling products
+│   ├── server.js             # Express server setup
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── ProductCard.js # Component for displaying individual product
+│   │   │   └── ProductList.js # Component for fetching and displaying filtered products
+│   │   ├── App.js            # Main app file
+│   │   └── index.js          # React app entry point
+└── README.md                 # Project overview and setup instructions
+How It Works
+### Backend (Express & MongoDB)
+Endpoint: /my-products
+A GET request to this endpoint fetches all the products that belong to the user with the specified email (filtering by email).
+MongoDB Model:
+The Product model is used to store product data with fields such as name, price, description, image, and email (to associate each product with a specific user).
+### Frontend (React)
+ProductList Component:
+
+The ProductList component makes an API call to the /my-products endpoint, passing the user's email.
+It then maps over the filtered product data and passes each product to the ProductCard component to display the details.
+ProductCard Component:
+
+The ProductCard component takes in a single product as a prop and displays the product's details, such as name, description, price, and image.

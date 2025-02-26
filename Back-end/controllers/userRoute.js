@@ -7,6 +7,8 @@ const jwt=require("jsonwebtoken")
 const { sendMail } =require("../utils/mail")
 let userRoute= express.Router()
 const {upload}=require("../middleware/multer")
+
+
   
 
 
@@ -26,6 +28,8 @@ const {upload}=require("../middleware/multer")
       if(user){
         next(new Errorhadler("user is already exist..........",400))
       }
+
+      
 
       bcrypt.hash(password,5,async(err,hash)=>{
 
@@ -71,7 +75,7 @@ const {upload}=require("../middleware/multer")
        }
        jwt.verify(token, process.env.SECRET, async(err, decoded)=> {
           if(err){
-            next(new Errorhadler("token is not valid",400))
+           return next(new Errorhadler("token is not valid",400))
           }
           
           let id=decoded.id
@@ -98,28 +102,27 @@ userRoute.post("/login",catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
     console.log(email)
     if (!email || !password) {
-      next(new Errorhadler("email and password are reqires", 400));
+     return next(new Errorhadler("email and password are reqires", 400));
     }
 
     let user = await UserModel.findOne({ email });
     console.log(user,"9999999999999")
 
     if (!user) {
-      next(new Errorhadler("Please Signup", 400));
+      return next(new Errorhadler("Please Signup", 400));
     }
 
     if(!user.isActivated){
-      next(new Errorhadler("Please Signup", 400));
+      return next(new Errorhadler("Please Signup", 400));
     }
 
     await bcrypt.compare(password, user.password, function(err, result) {
       if(err){
-        next(new Errorhadler("internal server error", 500));
+        return next(new Errorhadler("internal server error", 500));
       }
       if(!result){
-        next(new Errorhadler("password is incorrect", 400));
+        return next(new Errorhadler("password is incorrect", 400));
       }
-
       let token = jwt.sign({ id: user._id }, process.env.SECRET, {
         expiresIn: 60 * 60 * 60 * 24 * 30,
       });

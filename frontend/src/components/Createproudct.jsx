@@ -72,7 +72,7 @@ function CreateProduct() {
     }
 
     try {
-        const response=await axios.post("http://localhost:8975/product/createProduct",multiPartFormData,{
+        const response=await axios.post("http://localhost:1981/product/createProduct",multiPartFormData,{
             headers:{
                 "Content-Type":"multipart/form-data"
             },
