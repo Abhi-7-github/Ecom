@@ -15,6 +15,10 @@ const {userRoute} = require('./controllers/userRoute');
 const productRouter = require("./controllers/productRoutes");
 
 
+const cookieparser=require("cookie-parser")
+
+app.use(cookieparser())
+
 
 app.get("/test", async (req, res) => {
   res.send("hello.....");

@@ -1,9 +1,25 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 import { Form } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 function CreateProduct() {
+    const location = useLocation();
+    const productData =location.state || {}
+    
+    const { _id, email, name, description, category, tags, price, stock, images, edit } = productData
+
+    console.log(images)
+    
+    let prevImg = []
+    if (images) {
+        images.forEach((ele, ind) => (
+            prevImg.push(`http://localhost:1981/products-photo/${ele}`)
+        ))
+    }
+
+
     const [formData, setFormData] = useState({
         email: "",
         name: "",
@@ -15,6 +31,28 @@ function CreateProduct() {
         images: [],
         previewImg: []
     });
+
+    useEffect(()=>{
+        setFormData({
+            email: email || "",
+            name: name || "",
+            description: description || "",
+            category: category || "",
+            tags: tags || [],
+            price: price || "",
+            stock: stock || "",
+            images: images || [],
+            previewImg: prevImg || []
+        });
+    }, [email, name, description, category, tags, price, stock, images]);
+   
+
+    const handleDeletePrevImg =(index)=>{
+        let filterdImage=formData.images.filter((ele,ind)=>(ind!=index))
+        let filterdPreviewImg=formData.previewImg.filter((ele,ind)=>(ind!=index))
+        setFormData({...formData,images:filterdImage,previewImg:filterdPreviewImg})
+        console.log(filterdImage)
+    }
 
     const handleChange = (e) => {
 
@@ -90,6 +128,32 @@ function CreateProduct() {
         alert("Product is Not Created")
     }
 };
+
+    
+const handleEdit = async(e) => {
+    e.preventDefault()
+    const { email, name, description, category, tags, price, stock, images } = formData;
+    const multiPartFormData = new FormData;
+    multiPartFormData.append("name", name);
+    multiPartFormData.append("description", description);
+    multiPartFormData.append("category", category);
+    multiPartFormData.append("tags", tags);
+    multiPartFormData.append("price", price);
+    multiPartFormData.append("stock", stock);
+    multiPartFormData.append("email", email);
+    if (Array.isArray(images)) {
+        images.forEach(image => {
+            multiPartFormData.append("images", image)
+        });
+    }
+    try {
+        const response =await axios.put(`http://localhost:1981/product/update/${_id},multiPartFormData`)
+        console.log(response)
+    } catch (error) {
+        console.log(error) 
+    }
+   
+}
 
 
     let categoryArr = ["Electronic", "Groceries", "Fashion", "Dairy"];

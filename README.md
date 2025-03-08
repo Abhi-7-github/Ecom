@@ -300,45 +300,242 @@ The ProductCard component takes in a single product as a prop and displays the p
 
 
 
+## Milestone 12 - My Products Page
 
-# Milestone 12: My Products Page
-### Overview
-In this milestone, we created a "My Products" page that displays only the products associated with a specific user based on their email. We wrote an endpoint that filters products by the user's email and sends the data to the frontend. The frontend then displays the filtered products dynamically using the product card component.
+Overview
 
-### Learning Goals 🎯
-By the end of this milestone, I was able to:
+Welcome to Milestone 12! 
+ In this milestone, we will create the My Products page, which will display all the products added by the logged-in user based on their email. We will create an endpoint that retrieves product data filtered by the user’s email and displays it dynamically using the product card component.
 
-Write an endpoint in the backend that filters products by user email and fetches only those products.
-Send the filtered data from the backend to the frontend.
-Display the filtered products dynamically in the frontend using React components (Product Card).
-Project Structure
-bash
-Copy
-├── backend/
-│   ├── models/
-│   │   └── Product.js        # Mongoose model for products
-│   ├── routes/
-│   │   └── productRoutes.js  # API routes for handling products
-│   ├── server.js             # Express server setup
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ProductCard.js # Component for displaying individual product
-│   │   │   └── ProductList.js # Component for fetching and displaying filtered products
-│   │   ├── App.js            # Main app file
-│   │   └── index.js          # React app entry point
-└── README.md                 # Project overview and setup instructions
-How It Works
-### Backend (Express & MongoDB)
-Endpoint: /my-products
-A GET request to this endpoint fetches all the products that belong to the user with the specified email (filtering by email).
-MongoDB Model:
-The Product model is used to store product data with fields such as name, price, description, image, and email (to associate each product with a specific user).
-### Frontend (React)
-ProductList Component:
+Learning Goals 
 
-The ProductList component makes an API call to the /my-products endpoint, passing the user's email.
-It then maps over the filtered product data and passes each product to the ProductCard component to display the details.
-ProductCard Component:
+By the end of this milestone, you will:
 
-The ProductCard component takes in a single product as a prop and displays the product's details, such as name, description, price, and image.
+Understand how to write an endpoint that filters data by email and retrieves products from MongoDB.
+
+Learn how to receive filtered data on the frontend.
+
+Dynamically display product data using the existing product card component.
+
+Steps to Complete Milestone 12 
+
+1. Backend - Create an Endpoint to Fetch User-Specific Products
+
+Write an endpoint that retrieves all products associated with the logged-in user’s email and sends the data to the frontend.
+
+2. Frontend - Fetch and Display User-Specific Products
+
+Create a function to fetch product data based on the user’s email and pass it dynamically to the product card component.
+
+Testing the Implementation 
+
+Start your backend server.
+
+Start your frontend application.
+
+Visit the My Products page and ensure that only products associated with the logged-in user's email are displayed dynamically.
+
+Summary 
+
+In this milestone, we:
+
+Created a backend API to fetch user-specific products from MongoDB.
+
+Filtered product data based on the user’s email.
+
+Displayed filtered products dynamically using the product card component.
+
+Now, your My Products page displays personalized product data dynamically! 🚀
+
+
+
+## Milestone 13 - Edit Uploaded Products
+
+Overview
+
+Welcome to Milestone 13!  In this milestone, we will add functionality to edit uploaded products. We will implement an edit button and create a backend endpoint to update product details inside the MongoDB database.
+
+Learning Goals 
+
+By the end of this milestone, you will:
+
+Understand how to write an endpoint that updates existing data in MongoDB.
+
+Learn how to auto-fill a form with previous product data and provide an option to edit.
+
+Steps for Milestone 13 
+
+1. Backend - Create an Update Endpoint
+
+Write an endpoint that receives updated product data and modifies the existing data inside MongoDB.
+
+2. Frontend - Implement Edit Button & Auto-fill Form
+
+Add an edit button to the product card.
+
+When the edit button is clicked, send the selected product’s data to a form.
+
+Auto-fill the form with previous product details.
+
+Provide an option to edit and save the changes.
+
+Testing the Implementation 
+
+Start your backend server.
+
+Start your frontend application.
+
+Navigate to a product and click the edit button.
+
+Modify the product details and save the changes.
+
+Verify that the product data is updated in MongoDB.
+
+Summary 
+
+In this milestone, we:
+
+Created an API endpoint to update product details in MongoDB.
+
+Added an edit button to the product card.
+
+
+
+## Milestone 14 - Delete Product Functionality
+
+Overview
+
+Welcome to Milestone 14!  In this milestone, we will implement the functionality to delete a product. We will add a delete button to the product card and create a backend endpoint to remove a product from MongoDB using its ID.
+
+Learning Goals 🎯
+
+By the end of this milestone, you will:
+
+Understand how to write an endpoint that deletes a product by its ID from MongoDB.
+
+Steps for Milestone 14 
+
+1. Backend - Create a Delete Endpoint
+
+Write an endpoint that receives a product ID and deletes the corresponding product from MongoDB.
+
+2. Frontend - Implement Delete Button
+
+Add a delete button to the product card.
+
+When the delete button is clicked, send the product ID to the backend endpoint.
+
+Testing the Implementation 
+
+Start your backend server.
+
+Start your frontend application.
+
+Click the delete button on a product.
+
+Verify that the product is removed from MongoDB.
+
+Summary 
+
+In this milestone, we:
+
+Created an API endpoint to delete a product from MongoDB by ID.
+
+Added a delete button to the product card.
+
+# Milestone 15 - Navbar Component
+
+## Overview 
+In this milestone, we created a reusable Navbar component and integrated it into all the pages of our application. The navbar allows smooth navigation between different sections of our app, making it user-friendly and accessible on all screen sizes.
+
+## Learning Goals 
+By completing this milestone, we have learned:
+- How to create a Nav component.
+- How to reuse the same component across multiple pages.
+- How to make the Navbar responsive for different screen sizes.
+
+## Implementation Steps 
+1. **Created a new `Nav` component** with links to:
+   - Home
+   - My Products
+   - Add Product
+   - Cart
+2. **Ensured reusability** by adding the `Nav` component to all pages.
+3. **Implemented responsive design** to make the navbar adaptable to different screen sizes.
+4. **Tested navigation** to ensure smooth transitions between pages.
+
+## Milestone 16 - Product Info Page
+
+Overview 
+
+In this milestone, we created a Product Info Page that displays detailed product data, allows users to select a quantity, and includes an Add to Cart button.
+
+Learning Goals 
+
+By completing this milestone, we have learned:
+
+How to create a new page to display detailed product information.
+
+How to allow users to select a quantity before adding a product to the cart.
+
+How to implement an Add to Cart button for user interaction.
+
+Implementation Steps 
+
+Created a new Product Info Page that:
+
+Fetches and displays product details dynamically.
+
+Shows product name, image, price, and description.
+
+Allows users to select a quantity using increment and decrement buttons.
+
+Includes an Add to Cart button.
+
+Ensured smooth user experience by handling errors and responsiveness.
+
+Tested functionality to verify product data retrieval and cart integration.
+
+## Milestone 17: Add Products to Cart
+
+ Overview
+
+In this milestone, we will create a backend endpoint to add products to a user's cart and store them in the database.
+
+ Learning Goals
+
+By the end of this milestone, you will:
+
+Modify the user schema to store cart products.
+
+Write an endpoint to receive product details and store them in the cart.
+
+Steps to Implement
+
+1️ Update the User Schema
+
+Modify the existing user schema to include a cart field, which will store an array of cart items.
+
+2️ Create the Cart Schema (Optional)
+
+If needed, create a separate cart schema to manage cart items more effectively.
+
+3️ Write the Endpoint to Add Products to Cart
+
+Implement an API endpoint that allows users to add products to their cart.
+
+Ensure that the product details, including quantity, are stored properly.
+
+4️ Connect the Route to the Server
+
+Integrate the cart route into the main server file to enable functionality.
+
+Testing the Endpoint
+
+To test the API, use a tool like Postman or an API testing tool to send a request to add products to the cart.
+
+Endpoint: POST /cart/add
+
+Request Body: Contains user ID, product ID, and quantity.
+
+Expected Response: Confirms that the product has been successfully added to the cart.
