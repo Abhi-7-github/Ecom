@@ -142,4 +142,6 @@ productRouter.delete("/delete/:id",catchAsyncError(async(req,res,next)=>{
 
 
 
+
+
 module.exports =productRouter;
