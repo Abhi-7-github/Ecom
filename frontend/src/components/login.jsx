@@ -31,9 +31,11 @@ function Login(props) {
 
     try {
       await axios
-        .post("http://localhost:1981/user/login", {
+        .post("http://localhost:8080/user/login", {
           email,
           password,
+        }, {
+          withCredentials: true   
         })
         .then((response) => {
           console.log(response,"888")
@@ -43,7 +45,7 @@ function Login(props) {
       console.log("Login successful");
       
     } catch (error) {
-      console.log(error.response.data.message);
+      console.log(error);
       setError(error.response.data.message);
     }
   };

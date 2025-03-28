@@ -39,7 +39,7 @@ function Signup(props) {
 
     try {
       await axios
-        .post("http://localhost:1981/user/signup", {
+        .post("http://localhost:8080/user/signup", {
           name,
           email,
           password,

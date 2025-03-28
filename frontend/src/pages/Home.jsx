@@ -6,4 +6,5 @@ function Home(){
       <ProductPage/>
       )
 }
+
 export default Home

@@ -33,7 +33,7 @@ export default function SellerProcutPage() {
   const dele  = async(id)=>{
     console.log("jjjjj")
     try {
-     let responde=await axios.delete(`http://localhost:1981/product/delete/${id}`) 
+     let responde=await axios.delete(`http://localhost:8080/product/delete/${id}`) 
      
      console.log(responde.data)
      setDle(!dle)
@@ -57,3 +57,4 @@ export default function SellerProcutPage() {
       </div>
     );
   }
+  

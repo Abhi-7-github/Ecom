@@ -1,6 +1,6 @@
 let multer=require("multer")
 let path=require("path")
-console.log(path.join(__dirname,"../upload"),"")
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
